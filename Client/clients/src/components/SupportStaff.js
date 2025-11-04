@@ -154,7 +154,7 @@ const SStaffList = () => {
             onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
              <img
-      src={`http://localhost:5000/images/${ssf.name}.jpg`}
+      src={`https://sbitmern1anaam-backend.onrender.com/images/${ssf.name}.jpg`}
       alt={ssf.name}
       style={{
         width: "120px",
