@@ -19,7 +19,7 @@ const FacultyList = ({facilty}) => {
 
   const fetchFaculties = async () => {
     try {
-      const res = await axios.get("/api/faculties");
+      const res = await axios.get("https://sbitmern1anaam-backend.onrender.com/api/faculties");
       setFaculties(res.data.data);
     } catch (error) {
       console.error("Error fetching faculties:", error);
@@ -35,9 +35,9 @@ const FacultyList = ({facilty}) => {
     try {
       let res;
       if (editingId) {
-       res= await axios.put(`/api/faculty/${editingId}`, form);
+       res= await axios.put(`https://sbitmern1anaam-backend.onrender.com/api/faculty/${editingId}`, form);
       } else {
-        res=await axios.post("/api/faculty", form);
+        res=await axios.post("https://sbitmern1anaam-backend.onrender.com/api/faculty", form);
       }
       setStatus(res.data.message);
       setForm({ name: "", designation: "", qualification: "", salary: "" });

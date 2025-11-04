@@ -14,7 +14,7 @@ const SStaffList = () => {
 
   const fetchSStaffs = async () => {
     try {
-      const res = await axios.get("/api/sstaffs");
+      const res = await axios.get("https://sbitmern1anaam-backend.onrender.com/api/sstaffs");
       setSStaffs(res.data.data);
     } catch (error) {
       console.error("Error fetching support staff:", error);
@@ -32,9 +32,9 @@ const SStaffList = () => {
     try {
       let res;
       if (editingId) {
-       res =  await axios.put(`/api/sstaff/${editingId}`, form);
+       res =  await axios.put(`https://sbitmern1anaam-backend.onrender.com/api/sstaff/${editingId}`, form);
       } else {
-        res = await axios.post("/api/sstaff", form);
+        res = await axios.post("https://sbitmern1anaam-backend.onrender.com/api/sstaff", form);
       }
       setStatus(res.data.message);
       setForm({ name: "", role: "", salary: "" });
@@ -57,7 +57,7 @@ const SStaffList = () => {
   const deleteSStaff = async (id) => {
     if (window.confirm("Are you sure you want to delete this staff?")) {
       try {
-       const res= await axios.delete(`/api/sstaff/${id}`);
+       const res= await axios.delete(`https://sbitmern1anaam-backend.onrender.com/api/sstaff/${id}`);
        setStatus(res.data.message);
         fetchSStaffs();
       } catch (error) {

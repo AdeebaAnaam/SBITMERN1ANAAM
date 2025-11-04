@@ -25,7 +25,7 @@ const  Register =() =>{
     e.preventDefault();
     setStatus("Please wait...");
     try {
-        const res = await axios.post('/api/register', formData);
+        const res = await axios.post('https://sbitmern1anaam-backend.onrender.com/api/register', formData);
         setStatus(res.data.message);
         setFormData({ uname: "", password: "", role: "" });
         navigate('/login');

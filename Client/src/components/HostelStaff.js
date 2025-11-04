@@ -12,7 +12,7 @@ const HStaffList=() => {
   }, );
   const fetchHStaff = async () => {
     try {
-      const res = await axios.get('/api/hstaffs');
+      const res = await axios.get('https://sbitmern1anaam-backend.onrender.com/api/hstaffs');
       setHStaff(res.data.data);
     } catch (error) {
       console.error('Error fetching Hostel Staff:', error);
@@ -30,9 +30,9 @@ const HStaffList=() => {
     try {
       let res;
       if (editingId) {
-       res = await axios.put(`/api/hstaff/${editingId}`, form);
+       res = await axios.put(`https://sbitmern1anaam-backend.onrender.com/api/hstaff/${editingId}`, form);
       } else {
-        res =await axios.post("/api/hstaff", form);
+        res =await axios.post("https://sbitmern1anaam-backend.onrender.com/api/hstaff", form);
       }
       setStatus(res.data.message);
       setForm({ name: "", role: "", salary: "" });
@@ -53,7 +53,7 @@ const HStaffList=() => {
   const deleteHStaff = async (id) => {
     if (window.confirm("Are you sure you want to delete this staff?")) {    
       try { 
-       const res= await axios.delete(`/api/hstaff/${id}`);
+       const res= await axios.delete(`https://sbitmern1anaam-backend.onrender.com/api/hstaff/${id}`);
        setStatus(res.data.message);
         fetchHStaff();
       } catch (error) {

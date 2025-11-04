@@ -16,7 +16,13 @@ const authRoutes = require('./routes/authRoutes');
 
 dotenv.config();
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://your-frontend-name.onrender.com"
+  ],
+  credentials: true
+}));
 app.use(bodyParser.json());
 // ✅ Serve static files from public/images
 app.use('/images', express.static(path.join(__dirname, 'public', 'images')));

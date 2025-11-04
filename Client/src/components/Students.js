@@ -14,7 +14,7 @@ const StudentList = () => {
 
   const fetchStudents = async () => {
     try {
-      const res = await axios.get("/api/students");
+      const res = await axios.get("https://sbitmern1anaam-backend.onrender.com/api/students");
       setStudents(res.data.data);
     } catch (error) {
       console.error("Error fetching students:", error);
@@ -32,9 +32,9 @@ const StudentList = () => {
     try {
       let res;
       if (editingId) {
-       res= await axios.put(`/api/student/${editingId}`, form);
+       res= await axios.put(`https://sbitmern1anaam-backend.onrender.com/api/student/${editingId}`, form);
       } else {
-        res=await axios.post("/api/student", form);
+        res=await axios.post("https://sbitmern1anaam-backend.onrender.com/api/student", form);
       }
       setStatus(res.data.message);
       setForm({ name: "", branch: "", CGPA: "" });
@@ -57,7 +57,7 @@ const StudentList = () => {
   const deleteStudent = async (id) => {
     if (window.confirm("Are you sure you want to delete this student?")) {
       try {
-        const res = await axios.delete(`/api/student/${id}`);
+        const res = await axios.delete(`https://sbitmern1anaam-backend.onrender.com/api/student/${id}`);
         setStatus(res.data.message);
         fetchStudents();
       } catch (error) {

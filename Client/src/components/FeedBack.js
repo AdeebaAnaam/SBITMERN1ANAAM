@@ -23,7 +23,7 @@ const  FeedBack =() =>{
     e.preventDefault();
     setStatus("Please wait...");
     try {
-        const res = await axios.post('/api/send', formData);
+        const res = await axios.post('https://sbitmern1anaam-backend.onrender.com/api/send', formData);
         setStatus(res.data.message);
         setFormData({ name: "", email: "", message: "" });
         // Handle successful login (e.g., redirect, store token)
