@@ -1,0 +1,98 @@
+.App {
+  position: relative;
+  padding: 20px;
+  background-color: #6a921900;
+  text-align: center; /* light healthcare-friendly background */
+}
+
+/* Logo styling */
+.logo {
+  width: 30px;
+  height: auto;
+  position: left;
+  top: 20px;
+  left: 20px;
+}
+
+/* Heading styling */
+.heading {
+  position: absolute;
+  top: 50px;      /* vertical alignment with logo */
+  left: 240px;    /* shifted right so it doesn’t overlap logo */
+  color: rgb(63, 2, 21);
+  font-family: Georgia;
+  max-width: 600px;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+.App-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 20px;
+}
+
+/* Logo size */
+.App-logo {
+  width: 150px;   /* change size here */
+  height: auto;
+  margin-right: 20px; /* spacing between logo and text */
+}
+
+/* Heading and tagline */
+.App-heading h1 {
+  color: rgb(75, 7, 12);
+  font-family: Georgia, serif;
+  margin: 0;
+}
+
+.App-heading p {
+  font-size: 16px;
+  color: rgb(77, 5, 5);
+  font-family: Arial, sans-serif;
+  margin-top: 8px;
+}
+
+input {
+  padding: 10px;
+  margin: 10px 0;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #6d0707e0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #b7802fff;
+}
+
+.results {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.results ul {
+  list-style: none;
+  padding: 0;
+}
+
+.results li {
+  background: #e0f7fa;
+  padding: 8px 12px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
