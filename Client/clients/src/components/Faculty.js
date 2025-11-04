@@ -171,7 +171,7 @@ const FacultyList = ({facilty}) => {
           >
               {/*  Faculty Image */}
     <img
-      src={`http://localhost:5000/images/${fac.name}.jpg`}
+      src={`https://sbitmern1anaam-backend.onrender.com/images/${fac.name}.jpg`}
       alt={fac.name}
       style={{
         width: "120px",
