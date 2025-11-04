@@ -171,7 +171,7 @@ const ManagementList = () => {
             onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
              <img
-      src={`http://localhost:5000/images/${mag.name}.jpg`}
+      src={`https://sbitmern1anaam-backend.onrender.com/images/${mag.name}.jpg`}
       alt={mag.name}
       style={{
         width: "120px",
