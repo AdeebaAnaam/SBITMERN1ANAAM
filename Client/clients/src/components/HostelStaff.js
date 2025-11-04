@@ -151,7 +151,7 @@ const HStaffList=() => {
                      onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
             >
                      <img
-      src={`http://localhost:5000/images/${hsf.name}.jpg`}
+      src={`https://sbitmern1anaam-backend.onrender.com/images/${hsf.name}.jpg`}
       alt={hsf.name}
       style={{
         width: "120px",
