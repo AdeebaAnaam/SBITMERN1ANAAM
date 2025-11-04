@@ -176,7 +176,7 @@ const StudentList = () => {
             onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
              <img
-      src={`http://localhost:5000/images/${std.name}.jpg`}
+      src={`https://sbitmern1anaam-backend.onrender.com/images/${std.name}.jpg`}
       alt={std.name}
       style={{
         width: "120px",
