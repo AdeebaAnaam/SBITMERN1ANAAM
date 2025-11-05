@@ -19,7 +19,7 @@ const FacultyList = ({facilty}) => {
 
   const fetchFaculties = async () => {
     try {
-      const res = await axios.get(`${process.env.BACKEND_URL}/api/faculties`);
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/faculties`);
       setFaculties(res.data.data);
     } catch (error) {
       console.error("Error fetching faculties:", error);
@@ -35,9 +35,9 @@ const FacultyList = ({facilty}) => {
     try {
       let res;
       if (editingId) {
-       res= await axios.put(`${process.env.BACKEND_URL}/api/faculty/${editingId}`, form);
+       res= await axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/faculty/${editingId}`, form);
       } else {
-        res=await axios.post(`${process.env.BACKEND_URL}/api/faculty`, form);
+        res=await axios.post(`${process.envREACT_APP_.BACKEND_URL}/api/faculty`, form);
       }
       setStatus(res.data.message);
       setForm({ name: "", designation: "", qualification: "", salary: "" });
@@ -62,7 +62,7 @@ const FacultyList = ({facilty}) => {
   const deleteFaculty = async (id) => {
     if (window.confirm("Are you sure you want to delete this faculty?")) {
       try {
-        const res = await axios.delete(`${process.env.BACKEND_URL}/api/faculty/${id}`);
+        const res = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/faculty/${id}`);
         setStatus(res.data.message);
         fetchFaculties();
       } catch (error) {
@@ -189,7 +189,7 @@ const FacultyList = ({facilty}) => {
             <h3><strong style={{ color: "#520505ff" }}>Salary:</strong> {fac.salary}</h3>
 
             <div style={{ marginTop: "10px", display: "flex", justifyContent: "space-between" }}>
-                {localStorage.getItem("role") === "management" && (
+                {localStorage.getItem("role")?.toLowerCase() === "management" && (
               <>
               <button
                 onClick={() => editFaculty(fac)}
