@@ -169,7 +169,7 @@ const HStaffList=() => {
                 <h3><strong style={{color:'#520505ff'}}> Salary : </strong>{hsf.salary}</h3>
 
                 <div style={{ marginTop: "10px", display: "flex", justifyContent: "space-between" }}>
-                    {localStorage.getItem("role") === "management" && (
+                    {localStorage.getItem("role")?.toLowerCase() === "management" && (
                       <>
                  <button
                 onClick={() => editHStaff(hsf)}

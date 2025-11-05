@@ -25,7 +25,7 @@ const  Register =() =>{
     e.preventDefault();
     setStatus("Please wait...");
     try {
-        const res = await axios.post(`${process.env.BACKEND_URL}/api/register`, formData);
+        const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/register`, formData);
         setStatus(res.data.message);
         setFormData({ uname: "", password: "", role: "" });
         navigate('/login');

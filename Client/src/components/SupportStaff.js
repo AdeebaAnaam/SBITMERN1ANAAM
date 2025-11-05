@@ -171,7 +171,7 @@ const SStaffList = () => {
             <h3><strong style={{ color: "#520505ff" }}>Salary:</strong> {ssf.salary}</h3>
 
             <div style={{ marginTop: "10px", display: "flex", justifyContent: "space-between" }}>
-                {localStorage.getItem("role") === "management" && (
+                {localStorage.getItem("role")?.toLowerCase() === "management" && (
               <>
               <button
                 onClick={() => editSStaff(ssf)}

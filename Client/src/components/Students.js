@@ -202,7 +202,7 @@ const StudentList = () => {
             </h3>
 
             <div style={{ marginTop: "10px" }}>
-                {localStorage.getItem("role") === "management" && (
+                {localStorage.getItem("role")?.toLowerCase() === "management" && (
               <>
               <button
                 onClick={() => editStudent(std)}
