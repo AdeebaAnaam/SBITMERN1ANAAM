@@ -27,12 +27,12 @@ const  SignIn =() =>{
     e.preventDefault();
     setStatus("Please wait...");
     try {
-        const res = await axios.post('https://sbitmern1anaam-backend.onrender.com/api/login', formData);
+        const res = await axios.post(`${process.env.BACKEND_URL}/api/login`, formData);
         setStatus(res.data.message);
         if(res.data.success){
           localStorage.setItem('token', res.data.token);
-          setTimeout(() =>
-            navigate("/"),1500);
+          localStorage.setItem('role', res.data.role);
+          setTimeout(() =>navigate("/"),1500);
           } 
         setFormData({ uname: "", password: "", role: "" });
         // Handle successful login (e.g., redirect, store token)

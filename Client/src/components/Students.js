@@ -7,6 +7,9 @@ const StudentList = () => {
   const [editingId, setEditingId] = useState(null);
   const [status, setStatus] = useState("");
 
+  const role =localStorage.getItem("role");
+  const token =localStorage.getItem("token");
+
   // Fetch students on mount
   useEffect(() => {
     fetchStudents();
@@ -14,7 +17,7 @@ const StudentList = () => {
 
   const fetchStudents = async () => {
     try {
-      const res = await axios.get("https://sbitmern1anaam-backend.onrender.com/api/students");
+      const res = await axios.get(`${process.env.BACKEND_URL}/api/students`);
       setStudents(res.data.data);
     } catch (error) {
       console.error("Error fetching students:", error);
@@ -32,9 +35,9 @@ const StudentList = () => {
     try {
       let res;
       if (editingId) {
-       res= await axios.put(`https://sbitmern1anaam-backend.onrender.com/api/student/${editingId}`, form);
+       res= await axios.put(`${process.env.BACKEND_URL}/api/student/${editingId}`, form);
       } else {
-        res=await axios.post("https://sbitmern1anaam-backend.onrender.com/api/student", form);
+        res=await axios.post(`${process.env.BACKEND_URL}/api/student`, form);
       }
       setStatus(res.data.message);
       setForm({ name: "", branch: "", CGPA: "" });
@@ -57,7 +60,7 @@ const StudentList = () => {
   const deleteStudent = async (id) => {
     if (window.confirm("Are you sure you want to delete this student?")) {
       try {
-        const res = await axios.delete(`https://sbitmern1anaam-backend.onrender.com/api/student/${id}`);
+        const res = await axios.delete(`${process.env.BACKEND_URL}/api/student/${id}`);
         setStatus(res.data.message);
         fetchStudents();
       } catch (error) {
@@ -176,7 +179,7 @@ const StudentList = () => {
             onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
              <img
-      src={`https://sbitmern1anaam-backend.onrender.com/images/${std.name}.jpg`}
+      src={`${process.env.BACKEND_URL}/images/${std.name}.jpg`}
       alt={std.name}
       style={{
         width: "120px",
@@ -199,6 +202,8 @@ const StudentList = () => {
             </h3>
 
             <div style={{ marginTop: "10px" }}>
+                {localStorage.getItem("role") === "management" && (
+              <>
               <button
                 onClick={() => editStudent(std)}
                 style={{
@@ -226,6 +231,8 @@ const StudentList = () => {
               >
                 Delete
               </button>
+              </>
+                )}
             </div>
           </li>
         ))}

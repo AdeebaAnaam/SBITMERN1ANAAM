@@ -20,7 +20,7 @@ const ManagementList = () => {
 
   const fetchManagements = async () => {
     try {
-      const res = await axios.get("https://sbitmern1anaam-backend.onrender.com/api/managements");
+      const res = await axios.get(`${process.env.BACKEND_URL}/api/managements`);
       setManagements(res.data.data);
     } catch (error) {
       console.error("Error fetching managements:", error);
@@ -36,9 +36,9 @@ const ManagementList = () => {
     try {
       let res;
       if (editingId) {
-       res= await axios.put(`https://sbitmern1anaam-backend.onrender.com/api/management/${editingId}`, form);
+       res= await axios.put(`${process.env.BACKEND_URL}/api/management/${editingId}`, form);
       } else {
-        res = await axios.post("https://sbitmern1anaam-backend.onrender.com/api/management", form);
+        res = await axios.post(`${process.env.BACKEND_URL}/api/management`, form);
       }
       setStatus(res.data.message);
       setForm({ name: "", designation: "", qualification: "", salary: "" });
@@ -63,7 +63,7 @@ const ManagementList = () => {
   const deleteManagement = async (id) => {
     if (window.confirm("Are you sure you want to delete this faculty?")) {
       try {
-      const res =  await axios.delete(`https://sbitmern1anaam-backend.onrender.com/api/management/${id}`);
+      const res =  await axios.delete(`${process.env.BACKEND_URL}/api/management/${id}`);
       setStatus(res.data.message);
         fetchManagements();
       } catch (error) {
@@ -171,7 +171,7 @@ const ManagementList = () => {
             onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
              <img
-      src={`https://sbitmern1anaam-backend.onrender.com/images/${mag.name}.jpg`}
+      src={`${process.env.BACKEND_URL}/images/${mag.name}.jpg`}
       alt={mag.name}
       style={{
         width: "120px",

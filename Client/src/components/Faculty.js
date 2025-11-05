@@ -19,7 +19,7 @@ const FacultyList = ({facilty}) => {
 
   const fetchFaculties = async () => {
     try {
-      const res = await axios.get("https://sbitmern1anaam-backend.onrender.com/api/faculties");
+      const res = await axios.get(`${process.env.BACKEND_URL}/api/faculties`);
       setFaculties(res.data.data);
     } catch (error) {
       console.error("Error fetching faculties:", error);
@@ -35,9 +35,9 @@ const FacultyList = ({facilty}) => {
     try {
       let res;
       if (editingId) {
-       res= await axios.put(`https://sbitmern1anaam-backend.onrender.com/api/faculty/${editingId}`, form);
+       res= await axios.put(`${process.env.BACKEND_URL}/api/faculty/${editingId}`, form);
       } else {
-        res=await axios.post("https://sbitmern1anaam-backend.onrender.com/api/faculty", form);
+        res=await axios.post(`${process.env.BACKEND_URL}/api/faculty`, form);
       }
       setStatus(res.data.message);
       setForm({ name: "", designation: "", qualification: "", salary: "" });
@@ -62,7 +62,7 @@ const FacultyList = ({facilty}) => {
   const deleteFaculty = async (id) => {
     if (window.confirm("Are you sure you want to delete this faculty?")) {
       try {
-        const res = await axios.delete(`/api/faculty/${id}`);
+        const res = await axios.delete(`${process.env.BACKEND_URL}/api/faculty/${id}`);
         setStatus(res.data.message);
         fetchFaculties();
       } catch (error) {
@@ -171,7 +171,7 @@ const FacultyList = ({facilty}) => {
           >
               {/*  Faculty Image */}
     <img
-      src={`https://sbitmern1anaam-backend.onrender.com/images/${fac.name}.jpg`}
+      src={`${process.env.BACKEND_URL}/${fac.name}.jpg`}
       alt={fac.name}
       style={{
         width: "120px",
@@ -187,7 +187,10 @@ const FacultyList = ({facilty}) => {
             <h3><strong style={{ color: "#520505ff" }}>Designation:</strong> {fac.designation}</h3>
             <h3><strong style={{ color: "#520505ff" }}>Qualification:</strong> {fac.qualification}</h3>
             <h3><strong style={{ color: "#520505ff" }}>Salary:</strong> {fac.salary}</h3>
+
             <div style={{ marginTop: "10px", display: "flex", justifyContent: "space-between" }}>
+                {localStorage.getItem("role") === "management" && (
+              <>
               <button
                 onClick={() => editFaculty(fac)}
                 style={{
@@ -214,6 +217,8 @@ const FacultyList = ({facilty}) => {
               >
                 Delete
               </button>
+              </>
+                )}
             </div>
           </li>
         ))}

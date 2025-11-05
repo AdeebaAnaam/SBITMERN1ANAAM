@@ -14,7 +14,7 @@ const SStaffList = () => {
 
   const fetchSStaffs = async () => {
     try {
-      const res = await axios.get("https://sbitmern1anaam-backend.onrender.com/api/sstaffs");
+      const res = await axios.get(`${process.env.BACKEND_URL}/api/sstaffs`);
       setSStaffs(res.data.data);
     } catch (error) {
       console.error("Error fetching support staff:", error);
@@ -32,9 +32,9 @@ const SStaffList = () => {
     try {
       let res;
       if (editingId) {
-       res =  await axios.put(`https://sbitmern1anaam-backend.onrender.com/api/sstaff/${editingId}`, form);
+       res =  await axios.put(`${process.env.BACKEND_URL}/api/sstaff/${editingId}`, form);
       } else {
-        res = await axios.post("https://sbitmern1anaam-backend.onrender.com/api/sstaff", form);
+        res = await axios.post(`${process.env.BACKEND_URL}/api/sstaff`, form);
       }
       setStatus(res.data.message);
       setForm({ name: "", role: "", salary: "" });
@@ -57,7 +57,7 @@ const SStaffList = () => {
   const deleteSStaff = async (id) => {
     if (window.confirm("Are you sure you want to delete this staff?")) {
       try {
-       const res= await axios.delete(`https://sbitmern1anaam-backend.onrender.com/api/sstaff/${id}`);
+       const res= await axios.delete(`${process.env.BACKEND_URL}/api/sstaff/${id}`);
        setStatus(res.data.message);
         fetchSStaffs();
       } catch (error) {
@@ -154,7 +154,7 @@ const SStaffList = () => {
             onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
              <img
-      src={`https://sbitmern1anaam-backend.onrender.com/images/${ssf.name}.jpg`}
+      src={`${process.env.BACKEND_URL}/images/${ssf.name}.jpg`}
       alt={ssf.name}
       style={{
         width: "120px",
@@ -169,7 +169,10 @@ const SStaffList = () => {
             <h3><strong style={{ color: "#520505ff" }}>Name:</strong> {ssf.name}</h3>
             <h3><strong style={{ color: "#520505ff" }}>Role:</strong> {ssf.role}</h3>
             <h3><strong style={{ color: "#520505ff" }}>Salary:</strong> {ssf.salary}</h3>
+
             <div style={{ marginTop: "10px", display: "flex", justifyContent: "space-between" }}>
+                {localStorage.getItem("role") === "management" && (
+              <>
               <button
                 onClick={() => editSStaff(ssf)}
                 style={{
@@ -196,6 +199,8 @@ const SStaffList = () => {
               >
                 Delete
               </button>
+              </>
+                )}
             </div>
           </li>
         ))}

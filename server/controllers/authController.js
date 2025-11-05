@@ -25,7 +25,7 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   try {
-    const { uname, password, role } = req.body;
+    const { uname, password } = req.body;
 
     // check user
     const user = await User.findOne({ uname });
@@ -36,11 +36,15 @@ exports.login = async (req, res) => {
     if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
 
     // create token
-    const token = jwt.sign({ id: user._id, uname: user.uname }, process.env.SECRET_KEY, {
+    const token = jwt.sign({ id: user._id, uname: user.uname, role: user.role }, process.env.SECRET_KEY, {
       expiresIn: "1h",
     });
 
-    res.json({ success: true , message: "Login successful", token });
+    res.json({ success: true , message: "Login successful", token,    user: {
+        id: user._id,
+        uname: user.uname,
+        role: user.role,
+      },});
   } catch (error) {
     res.status(500).json({success:false, message: error.message });
   }

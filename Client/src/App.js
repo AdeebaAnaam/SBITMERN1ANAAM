@@ -26,9 +26,9 @@ return (
         <Route path="/students" element={<ProtectedRoute> <Students/> </ProtectedRoute>} />
         <Route path="/faculty" element={<ProtectedRoute> <Faculty /> </ProtectedRoute>} />
         <Route path="/management" element={<ProtectedRoute> <Management /> </ProtectedRoute>} />
-        <Route path="/support-staff" element={<ProtectedRoute> <SupportStaff /> </ProtectedRoute>} />
-        <Route path="/hostel-staff" element={ <ProtectedRoute> <HostelStaff /> </ProtectedRoute>} />
-        <Route path="/feedback" element={<ProtectedRoute> <FeedBack /> </ProtectedRoute>} />
+        <Route path="/support-staff" element={<ProtectedRoute > <SupportStaff /> </ProtectedRoute>} />
+        <Route path="/hostel-staff" element={ <ProtectedRoute > <HostelStaff /> </ProtectedRoute>} />
+        <Route path="/feedback" element={<ProtectedRoute > <FeedBack /> </ProtectedRoute>} />
       </Routes>
     </Router>
     <div>

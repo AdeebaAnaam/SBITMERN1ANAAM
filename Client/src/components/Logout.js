@@ -33,8 +33,7 @@ const Logout = () => {
       }
 
       // Send username & password confirmation
-      const res = await axios.post(
-        "https://sbitmern1anaam-backend.onrender.com/api/logout",
+      const res = await axios.post(`${process.env.BACKEND_URL}/api/logout`,
         { uname: formData.uname, password: formData.password },
         { headers: { Authorization: `Bearer ${token}` } }
       );
