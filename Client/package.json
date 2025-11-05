@@ -32,4 +32,5 @@
       "last 1 safari version"
     ]
   },
-   "homepage":"`${process.env.BACKEND_URL}"}
+   "homepage": "."
+}

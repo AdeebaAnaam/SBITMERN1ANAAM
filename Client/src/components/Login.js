@@ -27,7 +27,7 @@ const  SignIn =() =>{
     e.preventDefault();
     setStatus("Please wait...");
     try {
-        const res = await axios.post(`${process.env.BACKEND_URL}/api/login`, formData);
+        const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/login`, formData);
         setStatus(res.data.message);
         if(res.data.success){
           localStorage.setItem('token', res.data.token);

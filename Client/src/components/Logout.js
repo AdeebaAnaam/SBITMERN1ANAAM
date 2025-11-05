@@ -33,7 +33,7 @@ const Logout = () => {
       }
 
       // Send username & password confirmation
-      const res = await axios.post(`${process.env.BACKEND_URL}/api/logout`,
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/logout`,
         { uname: formData.uname, password: formData.password },
         { headers: { Authorization: `Bearer ${token}` } }
       );

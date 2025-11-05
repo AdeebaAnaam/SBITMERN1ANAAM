@@ -171,7 +171,7 @@ const FacultyList = ({facilty}) => {
           >
               {/*  Faculty Image */}
     <img
-      src={`${process.env.BACKEND_URL}/${fac.name}.jpg`}
+      src={`${process.env.REACT_APP_BACKEND_URL}/${fac.name}.jpg`}
       alt={fac.name}
       style={{
         width: "120px",

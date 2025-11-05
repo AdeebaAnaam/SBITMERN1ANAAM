@@ -12,7 +12,7 @@ const HStaffList=() => {
   }, );
   const fetchHStaff = async () => {
     try {
-      const res = await axios.get(`${process.env.BACKEND_URL}/api/hstaffs`);
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/hstaffs`);
       setHStaff(res.data.data);
     } catch (error) {
       console.error('Error fetching Hostel Staff:', error);
@@ -30,9 +30,9 @@ const HStaffList=() => {
     try {
       let res;
       if (editingId) {
-       res = await axios.put(`${process.env.BACKEND_URL}/api/hstaff/${editingId}`, form);
+       res = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/hstaff/${editingId}`, form);
       } else {
-        res =await axios.post(`${process.env.BACKEND_URL}/api/hstaff`, form);
+        res =await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/hstaff`, form);
       }
       setStatus(res.data.message);
       setForm({ name: "", role: "", salary: "" });
@@ -53,7 +53,7 @@ const HStaffList=() => {
   const deleteHStaff = async (id) => {
     if (window.confirm("Are you sure you want to delete this staff?")) {    
       try { 
-       const res= await axios.delete(`${process.env.BACKEND_URL}/api/hstaff/${id}`);
+       const res= await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/hstaff/${id}`);
        setStatus(res.data.message);
         fetchHStaff();
       } catch (error) {
@@ -151,7 +151,7 @@ const HStaffList=() => {
                      onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
             >
                      <img
-      src={`${process.env.BACKEND_URL}/images/${hsf.name}.jpg`}
+      src={`${process.env.REACT_APP_BACKEND_URL}/images/${hsf.name}.jpg`}
       alt={hsf.name}
       style={{
         width: "120px",

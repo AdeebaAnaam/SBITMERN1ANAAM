@@ -17,7 +17,7 @@ const StudentList = () => {
 
   const fetchStudents = async () => {
     try {
-      const res = await axios.get(`${process.env.BACKEND_URL}/api/students`);
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/students`);
       setStudents(res.data.data);
     } catch (error) {
       console.error("Error fetching students:", error);
@@ -35,9 +35,9 @@ const StudentList = () => {
     try {
       let res;
       if (editingId) {
-       res= await axios.put(`${process.env.BACKEND_URL}/api/student/${editingId}`, form);
+       res= await axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/student/${editingId}`, form);
       } else {
-        res=await axios.post(`${process.env.BACKEND_URL}/api/student`, form);
+        res=await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/student`, form);
       }
       setStatus(res.data.message);
       setForm({ name: "", branch: "", CGPA: "" });
@@ -60,7 +60,7 @@ const StudentList = () => {
   const deleteStudent = async (id) => {
     if (window.confirm("Are you sure you want to delete this student?")) {
       try {
-        const res = await axios.delete(`${process.env.BACKEND_URL}/api/student/${id}`);
+        const res = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/student/${id}`);
         setStatus(res.data.message);
         fetchStudents();
       } catch (error) {
@@ -179,7 +179,7 @@ const StudentList = () => {
             onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
              <img
-      src={`${process.env.BACKEND_URL}/images/${std.name}.jpg`}
+      src={`${process.env.REACT_APP_BACKEND_URL}/images/${std.name}.jpg`}
       alt={std.name}
       style={{
         width: "120px",
