@@ -32,6 +32,4 @@
       "last 1 safari version"
     ]
   },
-   "homepage":"https://sbitmern1anaam-backend.onrender.com"
-
-}
+   "homepage":"`${process.env.BACKEND_URL}"}
