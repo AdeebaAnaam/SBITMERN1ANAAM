@@ -31,7 +31,7 @@ const  SignIn =() =>{
         setStatus(res.data.message);
         if(res.data.success){
           localStorage.setItem('token', res.data.token);
-          localStorage.setItem('role', res.data.role);
+          localStorage.setItem('role', res.data.user.role);
           setTimeout(() =>navigate("/"),1500);
           } 
         setFormData({ uname: "", password: "", role: "" });
