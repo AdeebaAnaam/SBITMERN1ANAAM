@@ -232,6 +232,10 @@ const StudentList = () => {
                 Delete
               </button>
               </>
+                ) (
+                  <p style={{ color: "#320202ff", fontSize: "0.9em" }}>
+                 You don’t have permission to edit or delete.
+                  </p>
                 )}
             </div>
           </li>

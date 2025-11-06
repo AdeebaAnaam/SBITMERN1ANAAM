@@ -198,7 +198,11 @@ const HStaffList=() => {
                 Delete
               </button>
               </>
-                )}
+                ) (
+              <p style={{ color: "#888", fontSize: "0.9em" }}>
+               You don’t have permission to edit or delete.
+                   </p>
+               ) }
               </div>
                </li>
            ))} 
