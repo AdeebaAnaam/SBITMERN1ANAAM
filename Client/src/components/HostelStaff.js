@@ -43,8 +43,9 @@ const HStaffList=() => {
     } catch (error) {
       console.error("Error saving Hostel Staff:", error);
       setStatus(error.response.data.message ||"Failed to save Hostel Staff. Try again.");
-    }  setTimeout(() => { setStatus("") }, 3000);
-  };
+    } 
+
+  }; setTimeout(() => { setStatus("") }, 3000);
 
   //Edit staff
   const editHStaff = (staff) => {
@@ -61,9 +62,9 @@ const HStaffList=() => {
       } catch (error) {
         console.error("Error deleting Hostel Staff:", error);
         setStatus(error.response?.data?.message || "Failed to delete Hostel Staff.");
-      } setTimeout(() => { setStatus("") }, 3000);
+      } 
     }
-  };
+  }; setTimeout(() => { setStatus("") }, 3000);
 
   return (
   
@@ -171,7 +172,7 @@ const HStaffList=() => {
                 <h3><strong style={{color:'#520505ff'}}> Salary : </strong>{hsf.salary}</h3>
 
                 <div style={{ marginTop: "10px", display: "flex", justifyContent: "space-between" }}>
-                    {"role" === "management" ? (
+                    {role === "management" ? (
                       <>
                  <button
                 onClick={() => editHStaff(hsf)}

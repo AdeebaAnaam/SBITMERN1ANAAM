@@ -173,7 +173,7 @@ const FacultyList = ({facilty}) => {
           >
               {/*  Faculty Image */}
     <img
-      src={`${process.env.REACT_APP_BACKEND_URL}/${fac.name}.jpg`}
+      src={`${process.env.REACT_APP_BACKEND_URL}/images/${fac.name}.jpg`}
       alt={fac.name}
       style={{
         width: "120px",
@@ -191,7 +191,7 @@ const FacultyList = ({facilty}) => {
             <h3><strong style={{ color: "#520505ff" }}>Salary:</strong> {fac.salary}</h3>
 
             <div style={{ marginTop: "10px", display: "flex", justifyContent: "space-between" }}>
-                {"role" === "management" ? (
+                {role === "management" ? (
               <>
               <button
                 onClick={() => editFaculty(fac)}
