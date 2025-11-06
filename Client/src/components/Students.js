@@ -7,8 +7,7 @@ const StudentList = () => {
   const [editingId, setEditingId] = useState(null);
   const [status, setStatus] = useState("");
 
-  const role =localStorage.getItem("role");
-  const token =localStorage.getItem("token");
+  const role =localStorage.getItem("role")?.toLowerCase();
 
   // Fetch students on mount
   useEffect(() => {
@@ -202,7 +201,7 @@ const StudentList = () => {
             </h3>
 
             <div style={{ marginTop: "10px" }}>
-                {localStorage.getItem("role")?.toLowerCase() === "management" && (
+               {role === "management" ? (
               <>
               <button
                 onClick={() => editStudent(std)}
@@ -231,12 +230,14 @@ const StudentList = () => {
               >
                 Delete
               </button>
-              </>
-                ) (
-                  <p style={{ color: "#320202ff", fontSize: "0.9em" }}>
+              </> 
+                ):(
+                <p style={{ color: "#320202ff", fontSize: "0.9em" }}>
                  You don’t have permission to edit or delete.
                   </p>
                 )}
+              
+               
             </div>
           </li>
         ))}
