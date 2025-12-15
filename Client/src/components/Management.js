@@ -13,6 +13,8 @@ const ManagementList = () => {
   const [editingId, setEditingId] = useState(null);
   const [status, setStatus] = useState("");
 
+   const role =localStorage.getItem("role")?.toLowerCase();
+
   // Fetch managements on mount
   useEffect(() => {
     fetchManagements();
