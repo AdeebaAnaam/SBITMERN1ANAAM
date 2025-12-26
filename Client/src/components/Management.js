@@ -22,7 +22,15 @@ const ManagementList = () => {
 
   const fetchManagements = async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/managements`);
+      const token = localStorage.getItem("token");
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/managements`,
+        {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      }
+    );
+  
       setManagements(res.data.data);
     } catch (error) {
       console.error("Error fetching managements:", error);
