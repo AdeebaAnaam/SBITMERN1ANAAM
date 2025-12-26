@@ -14,7 +14,14 @@ const HStaffList=() => {
   }, );
   const fetchHStaff = async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/hstaffs`);
+      const token = localStorage.getItem("token");
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/hstaffs`,
+         {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      }
+      );
       setHStaff(res.data.data);
     } catch (error) {
       console.error('Error fetching Hostel Staff:', error);

@@ -16,7 +16,14 @@ const SStaffList = () => {
 
   const fetchSStaffs = async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/sstaffs`);
+      const token = localStorage.getItem("token");
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/sstaffs`,
+         {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      }
+      );
       setSStaffs(res.data.data);
     } catch (error) {
       console.error("Error fetching support staff:", error);

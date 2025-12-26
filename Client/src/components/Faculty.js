@@ -21,7 +21,14 @@ const FacultyList = ({facilty}) => {
 
   const fetchFaculties = async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/faculties`);
+      const token = localStorage.getItem("token");
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/faculties`,
+         {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      }
+      );
       setFaculties(res.data.data);
     } catch (error) {
       console.error("Error fetching faculties:", error);

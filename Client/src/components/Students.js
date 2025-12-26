@@ -16,7 +16,14 @@ const StudentList = () => {
 
   const fetchStudents = async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/students`);
+      const token = localStorage.getItem("token");
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/students`,
+         {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      }
+      );
       setStudents(res.data.data);
     } catch (error) {
       console.error("Error fetching students:", error);

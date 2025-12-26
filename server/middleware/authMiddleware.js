@@ -65,8 +65,26 @@ exports.roleCheck = (resource, action) => (req, res, next) => {
   }
 
   if (!permissions[resrc][act].includes(role)) {
-    return res.status(403).json({ message: "Access denied" });
+    let msg ="";
+    switch (act) {
+      case "create":
+        msg = "you can't add";
+        break;
+      case "read":
+        msg = "you can't read";
+        break;
+      case "update":
+        msg = "you can't update";
+        break;
+      case "delete":
+        msg = "you can't delete";
+        break;
+        default:
+        msg = "access denied ";
+    }
+    return res.status(403).json({ message: `Access denied: ${msg}` });
   }
+
 
   next();
 };
