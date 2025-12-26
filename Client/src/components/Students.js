@@ -25,6 +25,7 @@ const StudentList = () => {
       }
       );
       setStudents(res.data.data);
+
     } catch (error) {
       console.error("Error fetching students:", error);
     } setTimeout(() => { setStatus("") }, 3000);

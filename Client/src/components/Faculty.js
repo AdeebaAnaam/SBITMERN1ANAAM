@@ -201,12 +201,13 @@ const FacultyList = ({facilty}) => {
               <button
                 onClick={() => editFaculty(fac)}
                 style={{
-                  padding: "5px 10px",
-                  borderRadius: "5px",
+                    backgroundColor: "#b7802fff",
+                  color: "#fff",
                   border: "none",
+                  padding: "5px 10px",
+                  marginRight: "10px",
+                  borderRadius: "5px",
                   cursor: "pointer",
-                  backgroundColor: "#510f0fdb",
-                  color: "#f9f4ef",
                 }}
               >
                 Edit
@@ -214,12 +215,12 @@ const FacultyList = ({facilty}) => {
               <button
                 onClick={() => deleteFaculty(fac._id)}
                 style={{
+                  backgroundColor: "#6d0707e0",
+                  color: "#fff",
+                  border: "none",
                   padding: "5px 10px",
                   borderRadius: "5px",
-                  border: "none",
                   cursor: "pointer",
-                  backgroundColor: "#b7802fff",
-                  color: "#f9f4ef",
                 }}
               >
                 Delete
@@ -234,5 +235,4 @@ const FacultyList = ({facilty}) => {
 };
 
 export default FacultyList;
-
 

@@ -201,12 +201,13 @@ const ManagementList = () => {
               <button
                 onClick={() => editManagement(mag)}
                 style={{
-                  padding: "5px 10px",
-                  borderRadius: "5px",
+                  backgroundColor: "#b7802fff",
+                  color: "#fff",
                   border: "none",
+                  padding: "5px 10px",
+                  marginRight: "10px",
+                  borderRadius: "5px",
                   cursor: "pointer",
-                  backgroundColor: "#510f0fdb",
-                  color: "#f9f4ef",
                 }}
               >
                 Edit
@@ -214,14 +215,14 @@ const ManagementList = () => {
               <button
                 onClick={() => deleteManagement(mag._id)}
                 style={{
+                    backgroundColor: "#6d0707e0",
+                  color: "#fff",
+                  border: "none",
                   padding: "5px 10px",
                   borderRadius: "5px",
-                  border: "none",
                   cursor: "pointer",
-                  backgroundColor: "#b7802fff",
-                  color: "#f9f4ef",
                 }}
-              >
+                >
                 Delete
               </button>
                 
