@@ -7,7 +7,7 @@ const HStaffList=() => {
     const [editingId, setEditingId] = useState(null);
   const [status, setStatus] = useState("");
 
-  const role =localStorage.getItem("role")?.toLowerCase();
+
 
   useEffect(() => {
     fetchHStaff();
@@ -171,9 +171,7 @@ const HStaffList=() => {
                 <h3><strong style={{color:'#520505ff'}}>Role : </strong> {hsf.role}</h3>
                 <h3><strong style={{color:'#520505ff'}}> Salary : </strong>{hsf.salary}</h3>
 
-                <div style={{ marginTop: "10px", display: "flex", justifyContent: "space-between" }}>
-                    {role === "management" ? (
-                      <>
+                < div>
                  <button
                 onClick={() => editHStaff(hsf)}
                 style={{
@@ -200,12 +198,7 @@ const HStaffList=() => {
               >
                 Delete
               </button>
-              </>
-               ):(
-                <p style={{ color: "#320202ff", fontSize: "0.9em" }}>
-                 You don’t have permission to edit or delete.
-                  </p>
-               ) }
+              
               </div>
                </li>
            ))} 

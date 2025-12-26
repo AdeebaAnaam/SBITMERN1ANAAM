@@ -12,7 +12,7 @@ const FacultyList = ({facilty}) => {
   const [editingId, setEditingId] = useState(null);
   const [status, setStatus] = useState("");
 
-  const role =localStorage.getItem("role")?.toLowerCase();
+  
 
   // Fetch faculties on mount
   useEffect(() => {
@@ -190,9 +190,7 @@ const FacultyList = ({facilty}) => {
             <h3><strong style={{ color: "#520505ff" }}>Qualification:</strong> {fac.qualification}</h3>
             <h3><strong style={{ color: "#520505ff" }}>Salary:</strong> {fac.salary}</h3>
 
-            <div style={{ marginTop: "10px", display: "flex", justifyContent: "space-between" }}>
-                {role === "management" ? (
-              <>
+            <div >
               <button
                 onClick={() => editFaculty(fac)}
                 style={{
@@ -219,12 +217,7 @@ const FacultyList = ({facilty}) => {
               >
                 Delete
               </button>
-              </>
-                ):(
-                <p style={{ color: "#320202ff", fontSize: "0.9em" }}>
-                 You don’t have permission to edit or delete.
-                  </p>
-               ) }
+             
             </div>
           </li>
         ))}

@@ -7,7 +7,7 @@ const SStaffList = () => {
   const [editingId, setEditingId] = useState(null);
   const [status, setStatus] = useState("");
 
-  const role =localStorage.getItem("role")?.toLowerCase();
+  
 
   // Fetch support staff on mount
   useEffect(() => {
@@ -172,9 +172,7 @@ const SStaffList = () => {
             <h3><strong style={{ color: "#520505ff" }}>Role:</strong> {ssf.role}</h3>
             <h3><strong style={{ color: "#520505ff" }}>Salary:</strong> {ssf.salary}</h3>
 
-            <div style={{ marginTop: "10px", display: "flex", justifyContent: "space-between" }}>
-                {(role === "management") ? (
-              <>
+            <div>
               <button
                 onClick={() => editSStaff(ssf)}
                 style={{
@@ -201,12 +199,7 @@ const SStaffList = () => {
               >
                 Delete
               </button>
-              </>
-                ): (
-                <p style={{ color: "#888", fontSize: "0.9em" }}>
-                You don’t have permission to edit or delete.
-    </p>
-                )}
+        
             </div>
           </li>
         ))}

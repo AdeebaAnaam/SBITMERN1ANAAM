@@ -18,12 +18,14 @@ dotenv.config();
 const app = express();
 app.use(cors({
   origin: [
-    "https://sbitmern1anaam.onrender.com"
+     "http://localhost:3000",
+     "https://sbitmern1anaam.onrender.com"
   ],
   credentials: true
 }));
+
 app.use(bodyParser.json());
-// ✅ Serve static files from public/images
+// Serve static files from public/image
 app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
 console.log("Serving images from:", path.join(__dirname, 'public', 'images'));
 
