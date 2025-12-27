@@ -27,7 +27,7 @@ const StudentList = () => {
       setStudents(res.data.data);
 
     } catch (error) {
-      console.error("Error fetching students:", error);
+      setStatus(error.response?.data?.message);
     } setTimeout(() => { setStatus("") }, 3000);
   };
 
@@ -40,6 +40,7 @@ const StudentList = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const token = localStorage.getItem("token");
       let res;
       if (editingId) {
        res= await axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/student/${editingId}`, form);
