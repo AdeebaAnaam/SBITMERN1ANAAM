@@ -65,7 +65,7 @@ const FacultyList = ({facilty}) => {
       fetchFaculties();
     } catch (error) {
       console.error("Error saving faculty:", error);
-      setStatus( error.response.data.message || "Failed to save faculty. Try again.");
+      setStatus( error.response?.data?.message || "Failed to save faculty. Try again.");
     } setTimeout(() => { setStatus("") }, 3000);
   };
 
