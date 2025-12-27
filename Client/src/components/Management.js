@@ -84,7 +84,13 @@ const ManagementList = () => {
   const deleteManagement = async (id) => {
     if (window.confirm("Are you sure you want to delete this faculty?")) {
       try {
-      const res =  await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/management/${id}`);
+        const token = localStorage.getItem("token");
+      const res =  await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/management/${id}`,
+                                          {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
       setStatus(res.data.message);
         fetchManagements();
       } catch (error) {
