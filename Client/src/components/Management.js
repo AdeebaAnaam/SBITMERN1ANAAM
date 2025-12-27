@@ -67,7 +67,7 @@ const ManagementList = () => {
       fetchManagements();
     } catch (error) {
       console.error("Error saving management:", error);
-      setStatus( error.response.data.message ||"Failed to save management. Try again.");
+      setStatus( error.response?.data?.message ||"Failed to save management. Try again.");
     } setTimeout(() => { setStatus("") }, 3000);
   };
 
