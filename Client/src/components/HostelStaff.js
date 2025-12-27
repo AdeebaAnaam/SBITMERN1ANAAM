@@ -60,7 +60,7 @@ const HStaffList=() => {
       fetchHStaff();
     } catch (error) {
       console.error("Error saving Hostel Staff:", error);
-      setStatus(error.response.data.message ||"Failed to save Hostel Staff. Try again.");
+      setStatus(error.response?.data?.message ||"Failed to save Hostel Staff. Try again.");
     } 
 
   }; setTimeout(() => { setStatus("") }, 3000);
