@@ -78,7 +78,13 @@ const StudentList = () => {
   const deleteStudent = async (id) => {
     if (window.confirm("Are you sure you want to delete this student?")) {
       try {
-        const res = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/student/${id}`);
+        const token = localStorage.getItem("token");
+        const res = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/student/${id}`,
+                                      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
         setStatus(res.data.message);
         fetchStudents();
       } catch (error) {
