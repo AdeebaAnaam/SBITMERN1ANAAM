@@ -62,7 +62,7 @@ const SStaffList = () => {
       fetchSStaffs();
     } catch (error) {
       console.error("Error saving support staff:", error);
-      setStatus(error.response.data.message ||"Failed to save support staff. Try again.");
+      setStatus(error.response?.data?.message ||"Failed to save support staff. Try again.");
     }
     setTimeout(() => { setStatus("") }, 3000);
   };
