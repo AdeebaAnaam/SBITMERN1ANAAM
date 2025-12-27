@@ -77,7 +77,13 @@ const SStaffList = () => {
   const deleteSStaff = async (id) => {
     if (window.confirm("Are you sure you want to delete this staff?")) {
       try {
-       const res= await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/sstaff/${id}`);
+        const token = localStorage.getItem("token");
+       const res= await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/sstaff/${id}`,
+                                         {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
        setStatus(res.data.message);
         fetchSStaffs();
       } catch (error) {
