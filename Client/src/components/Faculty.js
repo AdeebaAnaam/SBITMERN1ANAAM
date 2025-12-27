@@ -52,7 +52,7 @@ const FacultyList = ({facilty}) => {
           },
         });
       } else {
-        res=await axios.post(`${process.env.REACT_APP_.BACKEND_URL}/api/faculty`, form,
+        res=await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/faculty`, form,
                               {
           headers: {
             Authorization: `Bearer ${token}`,
