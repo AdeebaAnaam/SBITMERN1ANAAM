@@ -36,7 +36,7 @@ exports.verifyToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return res.status(401).json({ message: "Access denied" });
+    return res.status(401).json({ message: "Please login." });
   }
 
   const token = authHeader.split(" ")[1];
@@ -46,7 +46,7 @@ exports.verifyToken = (req, res, next) => {
     req.user = decoded; // must contain role
     next();
   } catch (err) {
-    return res.status(401).json({ message: "Access denied" });
+    return res.status(401).json({ message: "Session expried. Please login again." });
   }
 };
 
