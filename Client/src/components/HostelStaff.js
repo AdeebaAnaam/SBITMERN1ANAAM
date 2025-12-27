@@ -25,7 +25,7 @@ const HStaffList=() => {
       setHStaff(res.data.data);
     } catch (error) {
      setStatus(error.response?.data?.message);
-    }  setTimeout(() => { setStatus("") }, 3000);
+    }  setTimeout(() => { setStatus("") }, 5000);
   };
 
   //Handle form input change
@@ -63,7 +63,7 @@ const HStaffList=() => {
       setStatus(error.response?.data?.message ||"Failed to save Hostel Staff. Try again.");
     } 
 
-  }; setTimeout(() => { setStatus("") }, 3000);
+  }; setTimeout(() => { setStatus("") }, 5000);
 
   //Edit staff
   const editHStaff = (staff) => {
@@ -88,7 +88,7 @@ const HStaffList=() => {
         setStatus(error.response?.data?.message || "Failed to delete Hostel Staff.");
       } 
     }
-  }; setTimeout(() => { setStatus("") }, 3000);
+  }; setTimeout(() => { setStatus("") }, 5000);
 
   return (
   
