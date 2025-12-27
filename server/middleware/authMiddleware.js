@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 /*ROLE–RESOURCE–ACTION PERMISSIONS */
 const permissions = {
   student: {
-    create: ["student", "management"],
+    create: ["student", "management", "faculty"],
     read: ["student", "faculty", "staff", "management"],
     update: ["faculty", "management"],
     delete: ["faculty", "management"],
