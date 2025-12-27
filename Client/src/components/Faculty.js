@@ -31,7 +31,7 @@ const FacultyList = ({facilty}) => {
       );
       setFaculties(res.data.data);
     } catch (error) {
-      console.error("Error fetching faculties:", error);
+      setStatus(error.response?.data?.message);
     } setTimeout(() => { setStatus("") }, 3000);
   };
 
@@ -42,6 +42,7 @@ const FacultyList = ({facilty}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const token = localStorage.getItem("token");
       let res;
       if (editingId) {
        res= await axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/faculty/${editingId}`, form);
