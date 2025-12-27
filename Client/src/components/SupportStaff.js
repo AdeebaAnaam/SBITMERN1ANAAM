@@ -26,7 +26,7 @@ const SStaffList = () => {
       );
       setSStaffs(res.data.data);
     } catch (error) {
-      console.error("Error fetching support staff:", error);
+      setStatus(error.response?.data?.message);
     }
   };
 
@@ -39,6 +39,7 @@ const SStaffList = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+       const token = localStorage.getItem("token");
       let res;
       if (editingId) {
        res =  await axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/sstaff/${editingId}`, form);
