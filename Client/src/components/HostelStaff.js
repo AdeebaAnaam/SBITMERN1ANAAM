@@ -40,9 +40,19 @@ const HStaffList=() => {
        const token = localStorage.getItem("token");
       let res;
       if (editingId) {
-       res = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/hstaff/${editingId}`, form);
+       res = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/hstaff/${editingId}`, form
+                              {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
       } else {
-        res =await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/hstaff`, form);
+        res =await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/hstaff`, form
+                               {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
       }
       setStatus(res.data.message);
       setForm({ name: "", role: "", salary: "" });
