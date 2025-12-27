@@ -82,7 +82,13 @@ const FacultyList = ({facilty}) => {
   const deleteFaculty = async (id) => {
     if (window.confirm("Are you sure you want to delete this faculty?")) {
       try {
-        const res = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/faculty/${id}`);
+         const token = localStorage.getItem("token");
+        const res = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/faculty/${id}`,
+                                                       {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setStatus(res.data.message);
         fetchFaculties();
       } catch (error) {
