@@ -47,14 +47,14 @@ const ManagementList = () => {
       const token = localStorage.getItem("token");
       let res;
       if (editingId) {
-       res= await axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/management/${editingId}`, form
+       res= await axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/management/${editingId}`, form,
                              {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
       } else {
-        res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/management`, form
+        res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/management`, form,
                                 {
           headers: {
             Authorization: `Bearer ${token}`,
