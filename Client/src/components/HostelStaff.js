@@ -11,7 +11,7 @@ const HStaffList=() => {
 
   useEffect(() => {
     fetchHStaff();
-  }, );
+  },[] );
   const fetchHStaff = async () => {
     try {
       const token = localStorage.getItem("token");
