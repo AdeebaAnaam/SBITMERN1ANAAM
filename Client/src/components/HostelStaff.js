@@ -74,7 +74,13 @@ const HStaffList=() => {
   const deleteHStaff = async (id) => {
     if (window.confirm("Are you sure you want to delete this staff?")) {    
       try { 
-       const res= await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/hstaff/${id}`);
+         const token = localStorage.getItem("token");
+       const res= await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/hstaff/${id}`,
+                                                     {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
        setStatus(res.data.message);
         fetchHStaff();
       } catch (error) {
