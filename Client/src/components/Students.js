@@ -63,7 +63,7 @@ const StudentList = () => {
       fetchStudents();
     } catch (error) {
       console.error("Error saving student:", error);
-      setStatus(error.response.data.message || "Error saving student");
+      setStatus(error.response?.data?.message || "Error saving student");
     }
     setTimeout(() => { setStatus("") }, 3000);
   };
