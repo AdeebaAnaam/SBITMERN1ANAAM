@@ -1,35 +1,46 @@
-require('dotenv').config();
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true, // or 'STARTTLS'
+  service: "gmail",
   auth: {
     user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_PASS,
+    pass: process.env.GMAIL_PASS, // App password
   },
 });
 
-exports.sendFeedback = (req, res) => {
+exports.sendFeedback = async (req, res) => {
   const { name, email, message } = req.body;
 
-  const mailOptions = {
-    from: process.env.GMAIL_USER,
-    to: `${email}`,
-    subject: 'Feedback from ' + name,
-    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-  };
+  try {
+    await transporter.sendMail({
+      from: `"Feedback App" <${process.env.GMAIL_USER}>`, // MUST be your Gmail
+      to: email, // ✅ send to user's Gmail
+      subject: "Feedback Received",
+      text: `Hi ${name},
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.error(error);
-      res.status(500).send({ message: 'Error sending email' });
-    } else {
-      res.send({ message: 'Email sent successfully' });
-    }
-  });
+Thank you for your feedback!
+
+Message received:
+"${message}"
+
+We will get back to you soon.
+
+Regards,
+Feedback Team`,
+    });
+
+    return res.status(200).json({
+      message: "Email sent successfully",
+    });
+
+  } catch (error) {
+    console.error("MAIL ERROR:", error);
+    return res.status(500).json({
+      message: "Email sending failed",
+    });
+  }
 };
+
 
 
 
