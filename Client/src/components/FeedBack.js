@@ -125,7 +125,6 @@ const  FeedBack =() =>{
                   </Typography>
       </Paper>
     </Container>
-    <p> {status} </p>
     </div>
   );
 };
