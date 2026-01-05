@@ -23,7 +23,7 @@ const  FeedBack =() =>{
     e.preventDefault();
     setStatus("Please wait...");
     try {
-        const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}`, formData);
+        const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/send`, formData);
         setStatus(res.data.message);
         setFormData({ name: "", email: "", message: "" });
         // Handle successful login (e.g., redirect, store token)
